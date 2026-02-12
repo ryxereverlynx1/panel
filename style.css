@@ -1,0 +1,112 @@
+/* 1. Centering the card */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Fallback color */
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 2. Blurred GIF Background */
+.bg-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('background.gif') no-repeat center center;
+    background-size: cover;
+    filter: blur(8px) brightness(0.4); /* Adjust blur and darkness here */
+    z-index: -1; /* Puts it behind the card */
+    transform: scale(1.1); /* Prevents white edges from blur */
+}
+
+/* 3. The Server Card */
+.server-card {
+    position: relative;
+    width: 580px;
+    background-color: rgba(11, 12, 22, 0.9); /* Slight transparency to see blur */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px 28px;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+}
+
+/* 4. Python Watermark Inside Card */
+.server-card::before {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    background-image: url('https://upload.wikimedia.org');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+/* 5. Card Elements */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.server-name { font-size: 19px; font-weight: 600; }
+
+.status-badge {
+    background-color: rgba(30, 51, 31, 0.8);
+    color: #7ef284;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item { font-size: 14px; color: #9ca3af; }
+.label { color: #4b5563; margin-right: 4px; }
+
+.manage-btn {
+    display: block; /* Makes the link fill the width */
+    text-decoration: none; /* Removes the blue underline */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9ca3af;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.manage-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
